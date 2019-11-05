@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Assignment #9</title>
+    </head>
+    
+    <body>
+    <h2>Cover Band Setlist</h2>
+    <p id="demo"></p>
+    
+    <h2>Genre Sorter</h2>
+    <select id="myselect" onchange="change_myselect(this.value)">
+    <option value="">Pick A Genre:</option>
+    <option value="neo-soul">Neo-Soul</option>
+    <option value="rap">Rap</option>
+    <option value="afrobeat">Afrobeat</option>
+    <option value="pop-rock">Pop Rock</option>
+    <option value="dream-pop">Dream Pop</option>
+    <option value="highlife">Highlife</option>
+    <option value="folk">Folk</option>
+    <option value="jazz">Jazz</option>
+    <option value="r+b">R+B</option>
+    </select>
+    <p id="demo2"></p>
+        
+    <script type = "text/javascript">
+        var text = '{"setlist" :[' +
+        '{"artist" : "Erykah Badu", "title" : "Times A Wasting", "genre" : "Neo-Soul", "year" : 2000},' +
+        '{"artist" : "DaBaby", "title" : "Baby Sitter (feat. Offset)", "genre" : "Rap", "year" : 2019},' +
+        '{"artist" : "Fela Kuti", "title" : "Coffin for Head of State (Part 1 & 2)", "genre" : "Afrobeat", "year" : 1980},' +
+        '{"artist" : "Fleetwood Mac", "title" : "Everywhere", "genre" : "Pop Rock", "year" : 1988},' +
+        '{"artist" : "SALES", "title" : "Over", "genre" : "Dream Pop", "year" : 2016},' +
+        '{"artist" : "Cardinal Rex Jim Lawson", "title" : "Oweibo Nua", "genre" : "Highlife", "year" : 1981},' +
+        '{"artist" : "Aoife ODonovan", "title" : "Magpie", "genre" : "Folk", "year" : 2016},' +
+        '{"artist" : "Archie Shepp", "title" : "Quiet Dawn", "genre" : "Jazz", "year" : 1972},' +
+        '{"artist" : "Kelela", "title" : "Jupiter", "genre" : "R&B", "year" : 2017},' +
+        '{"artist" : "Esperanza Spalding", "title" : "Thang (hips)", "genre" : "Jazz", "year" : 2019}]}';
+
+        obj = JSON.parse(text);
+        var list = " ";
+        var i;
+        for (i = 0; i < 10; i++) {
+        list += obj.setlist[i].title.bold() + "<br> Artist: " + obj.setlist[i].artist + "<br> Genre: " + obj.setlist[i].genre + "<br> Released " + obj.setlist[i].year + "<br><br>";
+        }
+        document.getElementById("demo").innerHTML = list;
+        
+        function change_myselect(value){
+        var txt;
+            switch (value) {
+                case "neo-soul" :
+                txt = obj.setlist[0].title.bold();
+                break;
+                case "rap" :
+                txt = obj.setlist[1].title.bold();
+                break;
+                case "afrobeat" :
+                txt = obj.setlist[2].title.bold();
+                break;
+                case "pop-rock" :
+                txt = obj.setlist[3].title.bold();
+                break;
+                case "dream-pop" :
+                txt = obj.setlist[4].title.bold();
+                break;
+                case "highlife" :
+                txt = obj.setlist[5].title.bold();
+                break;
+                case "folk" :
+                txt = obj.setlist[6].title.bold();
+                break;
+                case "jazz" :
+                txt = obj.setlist[7].title.bold() + "<br><br>" + obj.setlist[9].title.bold();
+                break;
+                case "r+b" :
+                txt = obj.setlist[8].title.bold();
+                break;
+                default:
+                txt = " ";
+                }
+        document.getElementById("demo2").innerHTML = txt;
+        }
+    </script>
+
+    </body>
+</html>
